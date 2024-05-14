@@ -1,0 +1,77 @@
+
+
+<div class="container bg-white p-3 rounded">
+
+      <div class="modal-header row">
+ <h5 class="modal-title col-4">Random Password Generator<i class="fa-solid fa-key col p-1"></i></h5>
+      </div>
+
+<form class="mt-3"> 
+
+  <div class="row mb-3">
+    <label for="password-length" class="col-sm-4 col-form-label">Password Length</label>
+    <div class="col-sm-6">
+      <input type="number" min="4" max="16" class="form-control" id="password-length" inputmode="numeric" required>
+      <div id="password-length-description" class="form-text">
+        Length is available between 4 ~ 16
+      </div>
+    </div>
+  </div>
+
+      <div class="row mb-3">
+      <div class="form-check-label col-sm-4" for="gridCheck1">Include Lowercase Characters</div>
+        <div class="col-sm-6">
+          <div class="form-check">
+            <label class="form-check-label" for="gridCheck1">(e.g. abcdefg)</label>
+            <input class="form-check-input" type="checkbox" id="gridCheck1">
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="form-check-label col-sm-4" for="gridCheck2">Include Upper Characters</div>
+        <div class="col-sm-6">
+          <div class="form-check">
+            <label class="form-check-label" for="gridCheck2">(e.g. ABCDEFG)</label>
+            <input class="form-check-input" type="checkbox" id="gridCheck2">
+          </div>
+        </div>
+      </div>
+
+     <div class="row mb-3">
+      <div class="form-check-label col-sm-4" for="gridCheck3">Include Numbers</div>
+        <div class="col-sm-6">
+          <div class="form-check">
+            <label class="form-check-label" for="gridCheck3">(e.g. 123456)</label>
+            <input class="form-check-input" type="checkbox" id="gridCheck3">
+          </div>
+        </div>
+      </div>
+
+          <div class="row mb-3">
+            <div class="form-check-label col-sm-4" for="gridCheck4">Include Symbols</div>
+            <div class="col-sm-6">
+              <div class="form-check">
+                <label class="form-check-label" for="gridCheck4">(e.g. @#$%)</label>
+                <input class="form-check-input" type="checkbox" id="gridCheck4">
+              </div>
+            </div>
+          </div>
+
+  <div class="row mb-3">
+    <label for="excludecharacters" class="col-sm-4 col-form-label">Exclude Characters</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="excludecharacters">
+            <div id="exclude-characters-description" class="form-text">
+              These characters will not appear in the password
+            </div>
+    </div>
+  </div>
+
+<div class="p-3 mb-2 bg-light text-dark p-1">Your Password is : </div>
+
+  <button type="submit" class="btn btn-success m-1">Generate Password</button>
+
+</form>
+
+</div>
