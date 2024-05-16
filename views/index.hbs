@@ -11,7 +11,7 @@
   <div class="row mb-3">
     <label for="password-length" class="col-sm-4 col-form-label">Password Length</label>
     <div class="col-sm-6">
-      <input type="number" min="4" max="16" class="form-control" id="password-length" inputmode="numeric" required>
+      <input name="passwordlength" value="" type="number" min="4" max="16" class="form-control" id="password-length" inputmode="numeric" required>
       <div id="password-length-description" class="form-text">
         Length is available between 4 ~ 16
       </div>
@@ -23,7 +23,7 @@
         <div class="col-sm-6">
           <div class="form-check">
             <label class="form-check-label" for="gridCheck1">(e.g. abcdefg)</label>
-            <input class="form-check-input" type="checkbox" id="gridCheck1">
+            <input name="checkboxes" class="form-check-input" type="checkbox" id="gridCheck1" value="checkbox1">
           </div>
         </div>
       </div>
@@ -33,7 +33,7 @@
         <div class="col-sm-6">
           <div class="form-check">
             <label class="form-check-label" for="gridCheck2">(e.g. ABCDEFG)</label>
-            <input class="form-check-input" type="checkbox" id="gridCheck2">
+            <input name="checkboxes" class="form-check-input" type="checkbox" id="gridCheck2" value="checkbox2">
           </div>
         </div>
       </div>
@@ -43,7 +43,7 @@
         <div class="col-sm-6">
           <div class="form-check">
             <label class="form-check-label" for="gridCheck3">(e.g. 123456)</label>
-            <input class="form-check-input" type="checkbox" id="gridCheck3">
+            <input name="checkboxes" class="form-check-input" type="checkbox" id="gridCheck3" value="checkbox3">
           </div>
         </div>
       </div>
@@ -53,7 +53,7 @@
             <div class="col-sm-6">
               <div class="form-check">
                 <label class="form-check-label" for="gridCheck4">(e.g. @#$%)</label>
-                <input class="form-check-input" type="checkbox" id="gridCheck4">
+                <input name="checkboxes" class="form-check-input" type="checkbox" id="gridCheck4" value="checkbox4">
               </div>
             </div>
           </div>
@@ -68,7 +68,9 @@
     </div>
   </div>
 
-<div class="p-3 mb-2 bg-light text-dark p-1">Your Password is : </div>
+<div class="p-3 mb-2 bg-light text-dark p-2 row">Your Password is : 
+  <h5 class="password fw-bolder col text-success">{{ password }}</h5>
+  </div>
 
   <button type="submit" class="btn btn-success m-1">Generate Password</button>
 
