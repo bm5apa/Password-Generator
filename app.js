@@ -9,9 +9,10 @@ app.set('views', './views')
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-  const checkValue = req.query.checkboxes || []
+  const checkvalue = req.query.checkboxes || []
   const passwordlength = req.query.passwordlength
-  let password = generatePassword(checkValue, passwordlength)
+  const passwordExclude = req.query.passwordExclude || []
+  let password = generatePassword(checkvalue, passwordlength, passwordExclude)
   res.render('index', { passwordlength , password })
 })
 
@@ -19,9 +20,7 @@ app.listen(port, () => {
   console.log(`express server is running on http://localhost:${port}`)
 })
 
-
-function generatePassword(checkboxes, passwordlength){
-
+function generatePassword(checkboxes, passwordlength, passwordExclude){
 let password = ''
 let characterArr = []
 const characterLower = 'abcdefghijklmnopqrstuvwxyz'
@@ -45,10 +44,20 @@ if(checkboxes.includes('checkbox4')){
 characterArr = characterArr.concat(specialIcon.split(''))
 }
 
+if(passwordExclude){
+characterArr = characterArr.filter((character) => {
+  if(passwordExclude.includes(character)){
+    return false
+  }
+  return true
+})
+}
+
 for(let i = 1; i <= passwordlength; i++){
 password += characterArr[Math.floor(Math.random()*(characterArr.length))]
 }
 
+console.log('characterArr', characterArr)
 console.log('password', password)
   return password
 }
