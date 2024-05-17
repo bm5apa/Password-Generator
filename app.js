@@ -10,15 +10,47 @@ app.use(express.static('public'))
 
 app.get('/', (req, res) => {
   const checkvalue = req.query.checkboxes || []
+  const checkboxObj = Object.assign({}, checkvalueObj(checkvalue))
+  const options = req.query
   const passwordlength = req.query.passwordlength
   const passwordExclude = req.query.passwordExclude || []
   let password = generatePassword(checkvalue, passwordlength, passwordExclude)
-  res.render('index', { passwordlength , password })
+  res.render('index', { passwordlength , password, checkboxObj:checkboxObj, options:options })
 })
 
 app.listen(port, () => {
   console.log(`express server is running on http://localhost:${port}`)
 })
+
+function checkvalueObj(checkvalue){
+let checkvalueArr = []
+
+if(checkvalue.includes('checkbox1')){
+checkvalueArr.push('checkbox1')
+}else{
+  checkvalueArr.push(null)
+}
+
+if(checkvalue.includes('checkbox2')){
+checkvalueArr.push('checkbox2')
+}else{
+  checkvalueArr.push(null)
+}
+
+if(checkvalue.includes('checkbox3')){
+checkvalueArr.push('checkbox3')
+}else{
+  checkvalueArr.push(null)
+}
+
+if(checkvalue.includes('checkbox4')){
+checkvalueArr.push('checkbox4')
+}else{
+  checkvalueArr.push(null)
+}
+
+return checkvalueArr
+}
 
 function generatePassword(checkboxes, passwordlength, passwordExclude){
 let password = ''
@@ -27,6 +59,10 @@ const characterLower = 'abcdefghijklmnopqrstuvwxyz'
 const characterUpper = characterLower.toUpperCase()
 const numbers = '1234567890'
 const specialIcon = `!@#$%^&*(){}"?><`
+
+if(checkboxes.length < 1){
+return password = '"Please check the checkboxes!"'
+}else{
 
 if(checkboxes.includes('checkbox1')){
 characterArr = characterArr.concat(characterLower.split(''))
@@ -57,7 +93,6 @@ for(let i = 1; i <= passwordlength; i++){
 password += characterArr[Math.floor(Math.random()*(characterArr.length))]
 }
 
-console.log('characterArr', characterArr)
-console.log('password', password)
   return password
+}
 }
